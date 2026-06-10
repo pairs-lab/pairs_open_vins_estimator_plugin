@@ -1,14 +1,15 @@
 #include <pairs_uav_state_estimators/estimators/state/state_generic.h>
 
-namespace open_vins
+namespace pairs_open_vins_estimator_plugin
 {
 
 const char estimator_name[] = "open_vins";
 const bool is_core_plugin = false;
 
-class OpenVins : public pairs_uav_state_estimators::StateGeneric {
+class OpenVins : public rclcpp::Node, public pairs_uav_state_estimators::StateGeneric {
 public:
-  OpenVins() : pairs_uav_state_estimators::StateGeneric(estimator_name, is_core_plugin) {
+  OpenVins() : rclcpp::Node(estimator_name), pairs_uav_state_estimators::StateGeneric(estimator_name, is_core_plugin) {
+    RCLCPP_INFO(get_logger(), "OpenVins 1");
   }
 
   ~OpenVins(void) {
@@ -17,6 +18,7 @@ public:
 
 }  // namespace open_vins
 
-#include <pluginlib/class_list_macros.h>
-PLUGINLIB_EXPORT_CLASS(open_vins::OpenVins, pairs_uav_managers::StateEstimator)
-
+// #include <rclcpp_components/register_node_macro.hpp>
+// RCLCPP_COMPONENTS_REGISTER_NODE(open_vins::OpenVins);
+#include <pluginlib/class_list_macros.hpp>
+PLUGINLIB_EXPORT_CLASS(pairs_open_vins_estimator_plugin::OpenVins, pairs_uav_managers::StateEstimator)
