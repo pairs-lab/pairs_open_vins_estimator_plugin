@@ -1,0 +1,5 @@
+<library path="lib/libPairsUavStateEstimators_OpenVins">
+  <class name="open_vins/OpenVinsEstimatorPlugin" type="open_vins::OpenVins" base_class_type="pairs_uav_managers::StateEstimator">
+    <description>open_vins state estimator</description>
+  </class>
+</library>
