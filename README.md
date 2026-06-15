@@ -1,6 +1,17 @@
 # pairs_open_vins_estimator_plugin
 
-Part of the **PAIRS UAV system**.
+A pluginlib plugin that registers OpenVINS visual-inertial odometry as a selectable state
+estimator inside the PAIRS estimation manager (`pairs_uav_managers`). Once loaded, the UAV
+can switch its localization source to OpenVINS, fusing VIO position/velocity/heading
+corrections into the lateral, altitude and heading estimators that feed flight control.
+
+## Contents
+- `open_vins/OpenVinsEstimatorPlugin` (`open_vins::OpenVins`) — a `pairs_uav_managers::StateEstimator`
+  plugin, built as the `PairsUavStateEstimators_OpenVins` library and declared in
+  `estimator_plugins.xml`.
+- `custom_configs/pairs_uav_managers.yaml` — example manager configuration that wires the
+  `open_vins` state estimator (lateral / altitude / heading sub-estimators, corrections,
+  transform manager) into the estimation, constraint, gain and transform managers.
 
 ## Branches
 - `ros1` — ROS 1 Noetic (catkin)
